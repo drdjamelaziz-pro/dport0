@@ -62,7 +62,6 @@ let menuToggle = document.querySelector(".menu-toggle");
 let mobileMenu = document.querySelector("nav");
 let menuClose = document.querySelector(".menu-close");
 
-
 let menuLinks = document.querySelectorAll("nav a");
 
 
@@ -75,13 +74,22 @@ let menuLinks = document.querySelectorAll("nav a");
 // FUNCTIONS
 //====================
 
-function openMenu() {
-    mobileMenu.classList.add("active");
-}
-
-
 function closeMenu() {
     mobileMenu.classList.remove("active");
+    document.body.style.overflow = "";
+
+    menuToggle.textContent = "☰";
+    menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+    menuToggle.setAttribute("aria-expanded", "false");
+}
+
+function openMenu() {
+    mobileMenu.classList.add("active");
+    document.body.style.overflow = "hidden";
+
+    menuToggle.textContent = "×";
+    menuToggle.setAttribute("aria-label", "Fermer le menu");
+    menuToggle.setAttribute("aria-expanded", "true");
 }
 
 
@@ -94,13 +102,19 @@ function closeMenu() {
 // EVENTS
 //====================
 
-
 menuToggle.addEventListener("click", openMenu);
 menuClose.addEventListener("click", closeMenu);
 
-
 menuLinks.forEach(function(link) {
     link.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeMenu();
+    }
+
 });
 
 
