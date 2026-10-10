@@ -199,6 +199,12 @@ nav a:hover {
 
     font-size: 24px;
 }
+
+.menu-close {
+    display: none;
+}
+
+
 /*==================================================
   HERO
 ==================================================*/
@@ -1036,9 +1042,25 @@ footer {
         padding: 25px 20px;
     }
 
+    footer {
+        padding: 40px 20px 20px;
+    }
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+        gap: 15px;
     }
 
     #hero {
@@ -1082,31 +1104,42 @@ footer {
 ==================================================*/
 
 @media (max-width: 768px) {
+
     .menu-toggle {
         display: block;
     }
 
-    nav {
-        display: none;
+    
+nav {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
 
-        position: fixed;
-        inset: 0;
-        z-index: 2000;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
 
-        width: 100%;
-        height: 100vh;
-        height: 100dvh;
+    padding: 100px 25px 40px;
 
-        padding: 100px 25px 40px;
+    background-color: var(--light-color);
+    overflow-y: auto;
 
-        background-color: var(--light-color);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
 
-        overflow-y: auto;
-    }
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
 
-    nav.active {
-        display: block;
-    }
+nav.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 
     nav ul {
         display: flex;
