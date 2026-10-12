@@ -1184,7 +1184,7 @@ nav.active {
         place-items: center;
 
         background: none;
-        color: var(--dark-color);
+        color: var(--light-color);
 
         font-size: 36px;
         line-height: 1;
