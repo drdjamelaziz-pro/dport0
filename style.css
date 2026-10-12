@@ -1113,6 +1113,7 @@ footer {
 
     .menu-toggle {
         display: block;
+        color: var(--primary-color);
     }
 
     
